@@ -1,0 +1,15 @@
+<div class='style'>
+<h1>Registration Numbers Webapp</h1>
+<form class ="entry" action='/reg_numbers' method='post'>
+
+<input type='text' name='name' placeholder="enter registration number"> </input><br><br>
+
+<input type='radio' name='regNum' value='Bellville'>Bellville</input>
+<input type='radio' name='regNum' value='Malmesbury'>Malmesbury</input>
+<input type='radio' name='regNum' value='Cape Town'>Cape Town</input><br><br>
+
+<input type='submit' class='button' value='ADD'></input>
+<div class='numPlate'>
+  {{output}}
+</div>
+</form>
