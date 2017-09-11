@@ -79,6 +79,10 @@ var newRegNumber = {
 
 
 const port = process.env.PORT || 8000;
+app.use(function(err, req, res, next) {
+  res.status(500).send(err.stack);
+})
+
 app.listen(port, function() {
     console.log('Example app listening at :' + port)
 });
