@@ -28,7 +28,7 @@ mongoose.connect(mongoURL, function(err) {
 });
 
 var plateNumber = mongoose.model('plateNumber', {
-  plateNum: Number
+  plateNum: String
 });
 
 
@@ -60,18 +60,21 @@ var newRegNumber = {
   plateNumber.findOne({
   plateArea: regNumbers
   }, function(err, results) {
-    if (!results) {
+    if (results) {
       plateNumber.create(newRegNumber);
-    } else {
+      //console.log(err);
+    } else if(err) {
+      console.log(err);
+    }
+    else {
 
-    };
-
+      res.render('index',{
+        listReg : regList
+      })
+    }
   });
 
 
-  res.render('index',{
-    listReg : regList
-  })
 })
 
 

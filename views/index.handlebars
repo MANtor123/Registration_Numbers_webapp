@@ -3,12 +3,12 @@
 <form class ="entry" action='/reg_numbers' method='post'>
 
 <input type='text' name='name' placeholder="enter registration number"> </input><br><br>
+<input type='submit' class='button' value='ADD'></input><br><br>
 
 <input type='radio' name='regNum' value='Bellville'>Bellville</input>
 <input type='radio' name='regNum' value='Malmesbury'>Malmesbury</input>
-<input type='radio' name='regNum' value='Cape Town'>Cape Town</input><br><br>
+<input type='radio' name='regNum' value='Cape Town'>Cape Town</input>
 
-<input type='submit' class='button' value='ADD'></input>
   {{#each listReg}}
   <div class='numPlate'>
  {{this}}
