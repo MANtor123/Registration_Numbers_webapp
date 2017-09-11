@@ -1,0 +1,19 @@
+body{
+  text-align: center;
+  background-color: white;
+}
+
+h1{
+  background: yellow;
+}
+
+.numPlate{
+  border: 5px solid black;
+  padding: 40px;
+  background-color: yellow;
+  width: 150px;
+  border-radius: 25px;
+  text-align: center;
+  margin: 50px;
+
+}
