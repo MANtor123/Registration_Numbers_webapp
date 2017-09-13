@@ -1,4 +1,3 @@
-
 'use strict';
 
 var express = require('express');
@@ -13,7 +12,7 @@ var mongoose = require('mongoose');
 
 
 const mongoURL = process.env.MONGO_DB_URL || "mongodb://localhost/regNumber";
-mongoose.connection.on("error", function (err) {
+mongoose.connection.on("error", function(err) {
   console.log("Mongo error : ");
   console.log(err);
 });
@@ -28,7 +27,7 @@ mongoose.connect(mongoURL, function(err) {
 });
 
 var plateNumber = mongoose.model('plateNumber', {
-  plateNum: String
+  plateNumber: String
 });
 
 
@@ -36,47 +35,66 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main'
+}));
 app.set('view engine', 'handlebars');
 app.use(express.static('public'))
 
 var regList = [];
 
 app.get('/', function(req, res) {
-    res.render('index')
+  res.render('index')
 })
 
-app.post('/reg_numbers', function(req, res){
-var regNumbers = req.body.name;
-var area = req.body.regNum;
-var string = ' ';
+app.post('/reg_numbers', function(req, res) {
+  var regNumbers = req.body.name;
+  var area = req.body.regNum;
+  var string = ' ';
 
-regList.push(regNumbers)
+  regList.push(regNumbers)
 
-var newRegNumber = {
-    plateArea: regNumbers
+  var newRegNumber = {
+    plateNumber: regNumbers
   };
 
   plateNumber.findOne({
-  plateArea: regNumbers
+    plateNumber: regNumbers
   }, function(err, results) {
-    if (results) {
-      plateNumber.create(newRegNumber);
-      //console.log(err);
-    } else if(err) {
+    if (err) {
       console.log(err);
+      return
     }
-    else {
 
-      res.render('index',{
-        listReg : regList
-      })
+    if (results) {
+      console.log(results);
+    } else {
+      plateNumber.create(newRegNumber);
+
     }
+    res.render('index', {
+      listReg: regList
+    })
   });
-
 
 })
 
+
+app.post('/reset_number', function(req, res){
+
+plateNumber.remove({}, function(err, remove){
+  if (err) {
+    console.log(err);
+    return
+  }
+  else{
+    res.render('index', {
+
+    })
+  }
+})
+
+})
 
 const port = process.env.PORT || 8000;
 app.use(function(err, req, res, next) {
@@ -84,5 +102,5 @@ app.use(function(err, req, res, next) {
 })
 
 app.listen(port, function() {
-    console.log('Example app listening at :' + port)
+  console.log('Example app listening at :' + port)
 });

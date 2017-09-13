@@ -9,11 +9,15 @@ h1{
 
 .numPlate{
   border: 5px solid black;
-  padding: 40px;
-  background-color: yellow;
-  width: 150px;
-  border-radius: 25px;
-  text-align: center;
-  margin: 50px;
+    padding: 32px;
+    background-color: yellow;
+    width: 150px;
+    height: 0px;
+    border-radius: 43px;
+    text-align: center;
+    margin: 28px;
+}
 
+.button{
+  margin-left: 458px
 }

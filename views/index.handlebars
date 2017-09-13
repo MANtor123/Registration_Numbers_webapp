@@ -3,7 +3,7 @@
 <form class ="entry" action='/reg_numbers' method='post'>
 
 <input type='text' name='name' placeholder="enter registration number"> </input><br><br>
-<input type='submit' class='button' value='ADD'></input><br><br>
+<input type='submit' class='btn' value='ADD'></input><br><br>
 
 <input type='radio' name='regNum' value='All'>All</input>
 <input type='radio' name='regNum' value='Bellville'>Bellville </input>
@@ -16,3 +16,10 @@
 </div>
   {{/each}}
 </form>
+
+<form class='entry' action='/reset_number' method='post'>
+
+<input type='submit' class='button' value='RESET'></input>
+
+</form>
+</div>
