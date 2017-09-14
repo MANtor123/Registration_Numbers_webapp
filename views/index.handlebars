@@ -2,19 +2,27 @@
 <h1>Registration Numbers Webapp</h1>
 <form class ="entry" action='/reg_numbers' method='post'>
 
-<input type='text' name='name' placeholder="enter registration number"> </input><br><br>
+<input type='text' name='name' placeholder="enter registration number" required=""> </input><br><br>
 <input type='submit' class='btn' value='ADD'></input><br><br>
 
 <input type='radio' name='regNum' value='All'>All</input>
-<input type='radio' name='regNum' value='Bellville'>Bellville </input>
-<input type='radio' name='regNum' value='Malmesbury'>Malmesbury</input>
-<input type='radio' name='regNum' value='Cape Town'>Cape Town</input>
+<input type='radio' name='regNum' value='cl'>Bellville </input>
+<input type='radio' name='regNum' value='ck'>Malmesbury</input>
+<input type='radio' name='regNum' value='ca'>Cape Town</input>
 
   {{#each listReg}}
   <div class='numPlate'>
- {{this}}
+ {{this.plateNumber}}
 </div>
   {{/each}}
+</form>
+
+</form>
+
+<form class='entry' action='/selected_town' method='post'>
+
+  <input type='submit' class='button' value='filter'></input>
+
 </form>
 
 <form class='entry' action='/reset_number' method='post'>
@@ -22,4 +30,7 @@
 <input type='submit' class='button' value='RESET'></input>
 
 </form>
+
+{{output}}
+
 </div>

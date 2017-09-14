@@ -41,18 +41,36 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 app.use(express.static('public'))
 
-var regList = [];
 
 app.get('/', function(req, res) {
-  res.render('index')
+
+    res.render('index');
+})
+
+app.get('/reg_numbers', function(req, res){
+  var regNumbers = req.body.name;
+
+
+  plateNumber.find({}, function(err, results){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(results);
+      res.render('index', {listReg: results})
+    }
+  })
 })
 
 app.post('/reg_numbers', function(req, res) {
+  var regList = [];
+  var regObj = {}
+
   var regNumbers = req.body.name;
   var area = req.body.regNum;
   var string = ' ';
 
-  regList.push(regNumbers)
+
 
   var newRegNumber = {
     plateNumber: regNumbers
@@ -67,40 +85,63 @@ app.post('/reg_numbers', function(req, res) {
     }
 
     if (results) {
-      console.log(results);
+      //console.log(results);
+
+      regList.push(regNumbers)
+      regObj[regNumbers] = 1
+
     } else {
       plateNumber.create(newRegNumber);
 
     }
-    res.render('index', {
-      listReg: regList
-    })
-  });
-
-})
 
 
-app.post('/reset_number', function(req, res){
+  })
+    res.redirect("/reg_numbers")
 
-plateNumber.remove({}, function(err, remove){
-  if (err) {
-    console.log(err);
-    return
-  }
-  else{
-    res.render('index', {
-
-    })
-  }
-})
-
-})
-
-const port = process.env.PORT || 8000;
-app.use(function(err, req, res, next) {
-  res.status(500).send(err.stack);
-})
-
-app.listen(port, function() {
-  console.log('Example app listening at :' + port)
 });
+
+
+app.post('/selected_town', function(req, res) {
+      var area = req.body.regNum;
+
+      plateNumber.find({
+          plateNumber: {
+            '$regex': '.*' + area
+          }
+          },
+          function(err, results) {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log(results);
+              res.render('index',  {
+                output: results
+              })
+            }
+          })
+
+      })
+
+    app.post('/reset_number', function(req, res) {
+
+      plateNumber.remove({}, function(err, remove) {
+        if (err) {
+          console.log(err);
+          return
+        } else {
+          res.render('index', {
+
+          })
+        }
+      })
+
+    })
+
+    const port = process.env.PORT || 8000; app.use(function(err, req, res, next) {
+      res.status(500).send(err.stack);
+    })
+
+    app.listen(port, function() {
+      console.log('Example app listening at :' + port)
+    });
