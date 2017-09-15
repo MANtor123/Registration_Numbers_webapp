@@ -104,10 +104,11 @@ app.post('/reg_numbers', function(req, res) {
 
 app.post('/selected_town', function(req, res) {
       var area = req.body.regNum;
+      console.log(area);
 
       plateNumber.find({
           plateNumber: {
-            '$regex': '.*' + area
+            '$regex': area + '.*'
           }
           },
           function(err, results) {
@@ -121,7 +122,7 @@ app.post('/selected_town', function(req, res) {
             }
           })
 
-      })
+      });
 
     app.post('/reset_number', function(req, res) {
 

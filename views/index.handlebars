@@ -5,10 +5,6 @@
 <input type='text' name='name' placeholder="enter registration number" required=""> </input><br><br>
 <input type='submit' class='btn' value='ADD'></input><br><br>
 
-<input type='radio' name='regNum' value='All'>All</input>
-<input type='radio' name='regNum' value='cl'>Bellville </input>
-<input type='radio' name='regNum' value='ck'>Malmesbury</input>
-<input type='radio' name='regNum' value='ca'>Cape Town</input>
 
   {{#each listReg}}
   <div class='numPlate'>
@@ -17,11 +13,17 @@
   {{/each}}
 </form>
 
-</form>
+<!-- </form> -->
 
 <form class='entry' action='/selected_town' method='post'>
+  <input type='radio' name='regNum' value='All'>All</input>
+  <input type='radio' name='regNum' value='cl'>Bellville </input>
+  <input type='radio' name='regNum' value='ck'>Malmesbury</input>
+  <input type='radio' name='regNum' value='ca'>Cape Town</input>
 
   <input type='submit' class='button' value='filter'></input>
+
+
 
 </form>
 
@@ -31,6 +33,10 @@
 
 </form>
 
-{{output}}
+{{#each output}}
+<div class='numPlate'>
+{{this.plateNumber}}
+{{/each}}
+</div>
 
 </div>
