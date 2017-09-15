@@ -6,16 +6,12 @@
 <input type='submit' class='btn' value='ADD'></input><br><br>
 
 
-  {{#each listReg}}
-  <div class='numPlate'>
- {{this.plateNumber}}
-</div>
-  {{/each}}
 </form>
 
 <!-- </form> -->
 
 <form class='entry' action='/selected_town' method='post'>
+
   <input type='radio' name='regNum' value='All'>All</input>
   <input type='radio' name='regNum' value='cl'>Bellville </input>
   <input type='radio' name='regNum' value='ck'>Malmesbury</input>
@@ -23,20 +19,30 @@
 
   <input type='submit' class='button' value='filter'></input>
 
-
-
 </form>
 
 <form class='entry' action='/reset_number' method='post'>
 
+
+<div class=reset>
 <input type='submit' class='button' value='RESET'></input>
+</div>
 
 </form>
+
+<div class='area'>
+{{#each listReg}}
+<div class='numPlate'>
+  {{this.plateNumber}}
+</div>
+{{/each}}
 
 {{#each output}}
 <div class='numPlate'>
 {{this.plateNumber}}
 {{/each}}
+</div>
+
 </div>
 
 </div>

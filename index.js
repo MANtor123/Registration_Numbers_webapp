@@ -104,7 +104,12 @@ app.post('/reg_numbers', function(req, res) {
 
 app.post('/selected_town', function(req, res) {
       var area = req.body.regNum;
-      console.log(area);
+  //    console.log(area);
+
+if (area === 'All'){
+  res.redirect('/reg_numbers');
+}
+else{
 
       plateNumber.find({
           plateNumber: {
@@ -122,6 +127,7 @@ app.post('/selected_town', function(req, res) {
             }
           })
 
+        }
       });
 
     app.post('/reset_number', function(req, res) {
