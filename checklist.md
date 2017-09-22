@@ -1,14 +1,11 @@
 # CHECKLIST
 
 ## Introduction
-⋅⋅* Introduction to the app ⋅⋅*
-⋅⋅* What does the app do ⋅⋅*
-⋅⋅* How to use the app
-⋅⋅* Purpose of the app
+Introduction to the app, explaining what it does and to basically to show how to use it. Explain the purpose of the app.
 
 ## File setup
-How to clone or fork file to a local machine
-Which files are in the repository
+How to clone or fork file to a local machine and to see which files are in the repository and what are they for.
+
 
 
 ## Installations
