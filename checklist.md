@@ -1,8 +1,8 @@
 # CHECKLIST
 
 ## Introduction
-⋅⋅* Introduction to the app
-⋅⋅* What does the app do
+⋅⋅* Introduction to the app ⋅⋅*
+⋅⋅* What does the app do ⋅⋅*
 ⋅⋅* How to use the app
 ⋅⋅* Purpose of the app
 
